@@ -1,4 +1,7 @@
-cmake_minimum_required(VERSION 3.21)
-project(PrePy CXX)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.21)
+PROJECT(PrePy CXX)
 
-add_executable(hello hello.cpp)
+SET(CMAKE_CXX_STANDARD 23)
+
+ADD_LIBRARY(prepy pre.cpp)
+TARGET_INCLUDE_DIRECTORIES(prepy PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
