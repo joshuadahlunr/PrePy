@@ -1,7 +1,9 @@
 #include "pre.hpp"
 
 #include <sstream>
+#include <string>
 #include <vector>
+#include <regex>
 
 namespace prepy {
 	static int next_tab_stop(int col) { return col + (8 - (col % 8)); }
@@ -121,5 +123,10 @@ namespace prepy {
 		}
 
 		return out.str();
+	}
+
+	std::string fixup_newlines(const std::string& input, bool fix_commas /*= true*/) {
+		static std::regex pattern(R"(;\s*\{)"), comma_pattern(R"(:;\s*\{)");
+		return std::regex_replace(input, fix_commas ? comma_pattern : pattern, "\n{");
 	}
 } // namespace prepy

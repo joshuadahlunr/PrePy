@@ -12,4 +12,6 @@ namespace prepy {
 
 	std::expected<std::string, error> preprocess_indentation(const std::string& src);
 
+	std::string fixup_newlines(const std::string& input, bool fix_commas = true);
+
 }
